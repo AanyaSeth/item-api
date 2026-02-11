@@ -2,6 +2,7 @@ services:
 
   - type: web
     name: item-api
-    runtime: docker
+    env: java
+    plan: free
     buildCommand: mvn clean package
     startCommand: java -jar target/*.jar
