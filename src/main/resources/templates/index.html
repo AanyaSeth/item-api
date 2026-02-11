@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Item Manager</title>
+</head>
+
+<body>
+
+<h1>Item Management System</h1>
+
+<!-- Message -->
+
+<p style="color:green;" th:if="${message}">
+    <span th:text="${message}"></span>
+</p>
+
+<hr>
+
+<!-- Add Item Form -->
+
+<h2>Add Item</h2>
+
+<form action="/add" method="post">
+    Name:
+    <input type="text" name="name" required><br><br>
+
+    ```
+    Description:
+    <input type="text" name="description" required><br><br>
+
+    Price:
+    <input type="number" name="price" step="0.01" required><br><br>
+
+    <button type="submit">Add Item</button>
+    ```
+
+</form>
+
+<hr>
+
+<!-- Get Item by ID -->
+
+<h2>Get Item by ID</h2>
+
+<form action="/get" method="post">
+    Item ID:
+    <input type="number" name="id" required>
+    <button type="submit">Search</button>
+</form>
+
+<!-- Found Item Display -->
+
+<div th:if="${foundItem}">
+    <h3>Item Details</h3>
+
+    ```
+    <p>ID: <span th:text="${foundItem.id}"></span></p>
+    <p>Name: <span th:text="${foundItem.name}"></span></p>
+    <p>Description: <span th:text="${foundItem.description}"></span></p>
+    <p>Price: <span th:text="${foundItem.price}"></span></p>
+    ```
+
+</div>
+
+<hr>
+
+<!-- All Items Table -->
+
+<h2>All Items</h2>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+    </tr>
+
+    ```
+    <tr th:each="item : ${items}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.description}"></td>
+        <td th:text="${item.price}"></td>
+    </tr>
+    ```
+
+</table>
+
+</body>
+</html>
