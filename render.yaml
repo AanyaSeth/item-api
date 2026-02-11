@@ -1,0 +1,7 @@
+services:
+
+  - type: web
+    name: item-api
+    env: java
+    buildCommand: mvn clean package
+    startCommand: java -jar target/*.jar
